@@ -15,7 +15,6 @@ parser.add_argument("-T", "--template")
 #Creates a dictionary of the inputs with the --___ corresponding to the key
 args = vars(parser.parse_args())
 
-print(args.items())
 if args['path'] == None:
 	args['path']='Math'
 #if args['filetype'] == None:
@@ -26,8 +25,8 @@ if args['template'] == None:
 filename = '/home/amanshah/Documents/{}'.format(args['path'])
 filedir = '/home/amanshah/Documents/%s/%s' %(args['path'],args['name'])
 if not os.path.exists(filedir):
-    os.makedirs(filedir)
-file_loc = filedir +'//' + args['name'] + args['filetype'] 
+	os.makedirs(filedir[:len(filedir) - 4])
+	file_loc = filedir[:len(filedir) - 4] +'/' + args['name'] 
 fil = open(file_loc, 'w+')
 with fil as f:
 	with open(args['template']) as f1:
